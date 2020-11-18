@@ -58,7 +58,6 @@ Toolkit.run(async tools => {
     }
   }
 
-
   if (version === null) {
     console.log(`::set-output name=wasBumped::${false}`)
     tools.exit.success('No version keywords found, skipping bump.')

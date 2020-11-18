@@ -34,4 +34,4 @@ jobs:
         env:
           NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
           IS_BUMPED: ${{ steps.version-bump.outputs.wasBumped }}
-        run: 'echo "new tag: $NEW_TAG, has new version: $IS_BUMPED"
+        run: 'echo "new tag: $NEW_TAG, has new version: $IS_BUMPED"'

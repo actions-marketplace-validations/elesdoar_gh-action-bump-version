@@ -10,6 +10,9 @@ jobs:
     name: "Bump Version on master"
     runs-on: ubuntu-latest
 
+    outputs:
+      wasBumped: ${{ steps.version-bump.outputs.wasBumped }}
+
     steps:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
@@ -35,3 +38,10 @@ jobs:
           NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
           IS_BUMPED: ${{ steps.version-bump.outputs.wasBumped }}
         run: 'echo "new tag: $NEW_TAG, has new version: $IS_BUMPED"'
+  other-job:
+    needs: bump-version
+    name: Show output in another job
+    steps:
+    - name: Output Step 2
+      run: echo ${{needs.bump-version.outputs.wasBumped}}
+

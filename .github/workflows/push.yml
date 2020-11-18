@@ -23,7 +23,7 @@ jobs:
           node-version: 12
       - name: "Automated Version Bump"
         id: version-bump
-        uses: "phips28/gh-action-bump-version@master"
+        uses: "elesdoar/gh-action-bump-version@master"
         with:
           tag-prefix: ''
         env:
@@ -33,4 +33,5 @@ jobs:
       - name:  'Output Step'
         env:
           NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
-        run: echo "new tag $NEW_TAG"
+          IS_BUMPED: ${{ steps.version-bump.outputs.wasBumped }}
+        run: 'echo "new tag: $NEW_TAG, has new version: $IS_BUMPED"

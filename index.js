@@ -59,6 +59,7 @@ Toolkit.run(async tools => {
   }
 
   if (version === null) {
+    console.log(`::set-output name=wasBumped::${false}`)
     tools.exit.success('No version keywords found, skipping bump.')
     return
   }
@@ -99,6 +100,7 @@ Toolkit.run(async tools => {
     newVersion = execSync(`npm version --git-tag-version=false ${version}`).toString().trim()
     newVersion = `${process.env['INPUT_TAG-PREFIX']}${newVersion}`
     console.log('new version:', newVersion)
+    console.log(`::set-output name=wasBumped::${true}`)
     console.log(`::set-output name=newTag::${newVersion}`)
     try {
       // to support "actions/checkout@v1"

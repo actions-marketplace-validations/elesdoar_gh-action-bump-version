@@ -38,3 +38,5 @@ inputs:
 outputs:
   newTag:
     description: 'The newly created tag'
+  wasBumped:
+    description: 'If was bumped a new version'
